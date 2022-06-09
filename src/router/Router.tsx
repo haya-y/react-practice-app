@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import { Login } from '../components/pages/Login';
 import { homeRoutes } from './HomeRoutes';
 import { Page404 } from '../components/pages/Page404';
+import { HeaderLayout } from '../components/templates/HeaderLayout';
 
 export const Router: VFC = memo(() => {
   window.console.log();
@@ -20,7 +21,7 @@ export const Router: VFC = memo(() => {
           <Switch>
             {homeRoutes.map((route) => (
               <Route key={route.path} exact={route.exact} path={`${url}${route.path}`}>
-                {route.children}
+                <HeaderLayout>{route.children}</HeaderLayout>
               </Route>
             ))}
           </Switch>
