@@ -54,6 +54,8 @@ module.exports = {
     // "arrow-body-style": ["always"],
     // 'arrow-body-style': ['as-needed'],
     // 'arrow-body-style': ['correct'],
+
+    'react-hooks/exhaustive-deps': 'off',
   },
 
   /**
