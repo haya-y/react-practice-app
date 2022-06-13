@@ -96,13 +96,18 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
                 onChange={(e) => onChangeUserDetail(e, 'phone')}
               />
             </FormControl>
-            <Button
-              colorScheme="teal"
-              size="md"
-              width={20}
-              onClick={onClickUpdateButton}
-            >更新
-            </Button>
+            {
+              loginUser?.isAdmin ? (
+                <Button
+                  colorScheme="teal"
+                  size="md"
+                  width={20}
+                  onClick={onClickUpdateButton}
+                >更新
+                </Button>
+              )
+                : <div />
+            }
           </Stack>
         </ModalBody>
       </ModalContent>
