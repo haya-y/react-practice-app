@@ -23,8 +23,6 @@ export const UserManagement: VFC = memo(() => {
     onSelectUser({ id, users, onOpen });
   }, [users, onSelectUser, onOpen]);
 
-  console.log('users(UserManagement): ', users);
-
   return (
     <div>
       {loading ? (

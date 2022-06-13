@@ -3,11 +3,12 @@ import {
 } from 'react';
 import {
   Box, Button, FormControl, FormLabel, Image, Input, Modal, ModalBody, ModalCloseButton,
-  ModalContent, ModalHeader, ModalOverlay, Stack, Text,
+  ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, Text,
 } from '@chakra-ui/react';
 import { User } from '../../../types/api/user';
 import { useLoginUser } from '../../../hooks/useLoginUser';
 import { useUpdateUser } from '../../../hooks/useUpdateUser';
+import { PrimaryButton } from '../../atoms/button/PrimaryButton';
 
 type Props = {
   user: User | null
@@ -22,7 +23,7 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
   const { loginUser } = useLoginUser();
   const { updateUser, userDetail, setUserDetail } = useUpdateUser();
 
-  const onClickUpdateButton = useCallback(() => {
+  const onClickUpdate = useCallback(() => {
     updateUser({ user, onClose });
   }, [updateUser, onClose, user]);
 
@@ -59,7 +60,7 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
       motionPreset="slideInBottom"
     >
       <ModalOverlay />
-      <ModalContent pb={5}>
+      <ModalContent pb={2}>
         <ModalHeader>ユーザー詳細</ModalHeader>
         <ModalCloseButton />
         <ModalBody mx={4}>
@@ -97,16 +98,14 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
               />
             </FormControl>
             {
-              loginUser?.isAdmin ? (
-                <Button
-                  colorScheme="teal"
-                  size="md"
-                  width={20}
-                  onClick={onClickUpdateButton}
-                >更新
-                </Button>
+              loginUser?.isAdmin && (
+                <ModalFooter>
+                  <PrimaryButton
+                    onClick={onClickUpdate}
+                  >更新
+                  </PrimaryButton>
+                </ModalFooter>
               )
-                : <div />
             }
           </Stack>
         </ModalBody>
