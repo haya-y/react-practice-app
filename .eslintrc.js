@@ -49,6 +49,13 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'react/require-default-props': 'off',
     camelcase: 'off',
+
+    // ↓を追加すると自動整形されなくなる
+    // "arrow-body-style": ["always"],
+    // 'arrow-body-style': ['as-needed'],
+    // 'arrow-body-style': ['correct'],
+
+    // 'react-hooks/exhaustive-deps': 'off',
   },
 
   /**
